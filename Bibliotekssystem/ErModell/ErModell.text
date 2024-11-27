@@ -1,0 +1,42 @@
+===================== ER-Model ===========
+
+Book:
+    - BookID (PK) (NOT NULL, INT)
+    - Title (VARCHAR) (NOT NULL)
+    - ReleaseDate (DATE)
+    - Summary (TEXT) 
+    - Publisher (VARCHAR)  
+    - IsAvailable (BOOLEAN, DEFAULT TRUE)
+
+ Author:
+    - AuthorID (PK) (NOT NULL, INT)
+    - FirstName (VARCHAR) (NOT NULL)
+    - LastName (VARCHAR) (NOT NULL)
+    - BirthYear (VARCHAR)
+    - Biography (TEXT) 
+
+BookAuthor:
+    - BookAuthorID (PK, NOT NULL, INT)  
+    - BookID (FK, NOT NULL, INT)  
+    - AuthorID (FK, NOT NULL, INT)  
+
+Loan Table::
+    - LoanID (PK) (NOT NULL, INT)
+    - BookID (FK) (NOT NULL, INT)
+    - BorrowerName (VARCHAR) (NOT NULL)
+    - LoanDate (DATE) (NOT NULL)
+    - ReturnDate (DATE)
+    - IsReturned (BOOLEAN, DEFAULT FALSE)
+
+================ ER-Relationship ============================
+
+Book - Author (många till många)
+    - En bok kan ha flera författare.
+    - En författare kan skriva flera böcker.
+    - Hanteras genom bryggtabellen BookAuthor
+
+Book - Loan (en till många)
+    - En bok kan lånas ut flera gånger.
+    - Ett lån gäller för en specifik bok.
+    - Relationen hanteras via främmande nyckeln BookID i Loan.
+
