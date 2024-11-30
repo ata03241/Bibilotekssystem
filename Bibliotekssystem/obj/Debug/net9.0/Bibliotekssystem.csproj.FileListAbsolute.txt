@@ -144,3 +144,4 @@ C:\Users\pakhr\OneDrive\Desktop\Sql Slutprojekt\Bibliotekssystem\obj\Debug\net9.
 C:\Users\pakhr\OneDrive\Desktop\Sql Slutprojekt\Bibliotekssystem\obj\Debug\net9.0\Bibliotekssystem.pdb
 C:\Users\pakhr\OneDrive\Desktop\Sql Slutprojekt\Bibliotekssystem\obj\Debug\net9.0\Bibliotekssystem.genruntimeconfig.cache
 C:\Users\pakhr\OneDrive\Desktop\Sql Slutprojekt\Bibliotekssystem\obj\Debug\net9.0\ref\Bibliotekssystem.dll
+C:\Users\pakhr\OneDrive\Desktop\Sql Slutprojekt\Bibliotekssystem\obj\Debug\net9.0\Bibliotekssystem.sourcelink.json
