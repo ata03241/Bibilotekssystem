@@ -1,4 +1,5 @@
 using Bibliotekssystem.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 public class Addloans
@@ -7,6 +8,38 @@ public class Addloans
     {
         using (var context = new AppDbContext())
         {
+
+            const int LoanLimt = 3;
+
+            System.Console.WriteLine("\n Available Books\n");
+            var books = context.Books.Include(bo => bo.BookAuthors)
+                .ThenInclude(ba => ba.Author)
+                .ToList();
+
+            if (!books.Any())
+            {
+                Console.WriteLine("No books available right now.");
+                return;
+            }
+
+            foreach (var boo in books)
+            {
+                Console.WriteLine($"Book ID: {boo.Id}, Title: {boo.Title}, Publisher: {boo.Publisher ?? "Unknown"}, Available: {(boo.IsAvailable ? "Yes" : "No")}\n");
+            }
+
+
+            Console.Write("Enter Borrower's Name: ");
+            var borrower = Console.ReadLine();
+
+            var loancount = context.Loans
+                .Count(l => l.BorrowerName == borrower && !l.IsReturned);
+
+            if (loancount >= LoanLimt)
+            {
+                Console.WriteLine($"Borrower '{borrower}' has reached the loan limit of {LoanLimt} active loans.");
+                return;
+            }
+
             Console.Write("Enter Book ID: ");
             if (!int.TryParse(Console.ReadLine(), out var bookId))
             {
@@ -26,9 +59,6 @@ public class Addloans
                 System.Console.WriteLine("The book is currently unavialble");
                 return;
             }
-
-            Console.Write("Enter Borrower's Name: ");
-            var borrower = Console.ReadLine();
             var loan = new Loan
             {
                 BookId = bookId,

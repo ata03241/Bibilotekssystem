@@ -6,7 +6,8 @@ public class ListLoan
 {
     public static void Run()
     {
-         using(var context = new AppDbContext())
+        
+        using(var context = new AppDbContext())
         {
             var loans = context.Loans.Include(l => l.Book)
                 //vi ska lista bara loan book
@@ -23,6 +24,7 @@ public class ListLoan
                 {
                     System.Console.WriteLine($"\nBook: {loan.Book.Title}");
                     System.Console.WriteLine($"borrower: {loan.BorrowerName}\n");
+                    System.Console.WriteLine($"Is returned: {loan.IsReturned}");
                 }
 
             }

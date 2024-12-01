@@ -1,5 +1,6 @@
 using Bibliotekssystem.Models;
 using System;
+using System.Linq;
 
 public class ReturnBook
 {
@@ -7,37 +8,39 @@ public class ReturnBook
     {
         using (var context = new AppDbContext())
         {
-            Console.Write("Enter Loan ID to return the book: ");
-            if (!int.TryParse(Console.ReadLine(), out var loanId))
+            Console.Write("Enter Borrower's Name: ");
+            var borrowerName = Console.ReadLine();
+
+            Console.Write("Enter Book ID to return: ");
+            if (!int.TryParse(Console.ReadLine(), out var bookId))
             {
-                Console.WriteLine("Invalid Loan ID.");
+                Console.WriteLine("Invalid Book ID.");
                 return;
             }
-
-            var loan = context.Loans.Find(loanId);
+            
+            var loan = context.Loans
+                .FirstOrDefault(l => l.BorrowerName == borrowerName && l.BookId == bookId && !l.IsReturned);
 
             if (loan == null)
             {
-                Console.WriteLine("Loan not found.");
+                Console.WriteLine("No active loan found for this borrower and book.");
                 return;
             }
 
-            if (loan.IsReturned)
-            {
-                Console.WriteLine("This book has already been returned.");
-                return;
-            }
+            
             loan.IsReturned = true;
             loan.ReturnDate = DateTime.Now;
 
-            var book = context.Books.Find(loan.BookId);
-            if(book != null)
+            
+            var book = context.Books.Find(bookId);
+            if (book != null)
             {
-               book.IsAvailable = true; //true when returing
+                book.IsAvailable = true; 
             }
+
             context.SaveChanges();
 
-            Console.WriteLine($"Book with Loan ID {loanId} has been returned.");
+            Console.WriteLine($"Book with ID {bookId} has been returned by {borrowerName}.");
         }
     }
 }

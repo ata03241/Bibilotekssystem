@@ -16,8 +16,10 @@ class Program
         System.Console.WriteLine("4. Add a loan for a book");
         System.Console.WriteLine("5. Return book");
         System.Console.WriteLine("6. Remove author, books and loans");
-        System.Console.WriteLine("7. List Books WithAuthors ");
+        System.Console.WriteLine("7. List Books With Authors ");
         System.Console.WriteLine("8. List all loan book");
+        System.Console.WriteLine("9. Update author, book and relationship");
+
 
         var input = Console.ReadLine();
 
