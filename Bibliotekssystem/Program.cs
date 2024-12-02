@@ -49,6 +49,9 @@ class Program
             case "8":
                 ListLoan.Run();
                 break;
+            case "9":
+                Update.Run();
+                break;
 
         }
     }

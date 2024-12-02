@@ -14,7 +14,7 @@ public class Seed
                 {
                     FirstName = "NIKO",
                     LastName = "BOY",
-                    BirthYear = new DateTime(1989,7,13),
+                    BirthYear = new DateTime(1989,7,10),
                     Biography = "Young boy from Thailand"
                 };
 
