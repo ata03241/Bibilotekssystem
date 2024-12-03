@@ -57,6 +57,9 @@ class Program
             case 10:
                 authorwbook.Run();
                 break;
+            case 11:
+                bookwauthor.Run();
+                break;
 
         }
     }
