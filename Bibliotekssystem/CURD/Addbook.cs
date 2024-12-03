@@ -14,7 +14,9 @@ public class AddBookss
             var bookReleaseDate = Console.ReadLine();
             if (!DateTime.TryParse(bookReleaseDate, out var releaseDate))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid date format. Please use yyyy-MM-dd.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
@@ -40,8 +42,10 @@ public class AddBookss
 
             context.Books.Add(book);
             context.SaveChanges();
-
+            
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Book '{bookName}' added successfully!");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

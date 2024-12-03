@@ -14,7 +14,9 @@ public class ReturnBook
             Console.Write("Enter Book ID to return: ");
             if (!int.TryParse(Console.ReadLine(), out var bookId))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid Book ID.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
             
@@ -23,7 +25,9 @@ public class ReturnBook
 
             if (loan == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("No active loan found for this borrower and book.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
@@ -39,8 +43,10 @@ public class ReturnBook
             }
 
             context.SaveChanges();
-
+        
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Book with ID {bookId} has been returned by {borrowerName}.");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

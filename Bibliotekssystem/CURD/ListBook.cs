@@ -14,10 +14,10 @@ public class ListBook
             
             foreach (var book in books)
             {
-                System.Console.WriteLine($"\nBook: {book.Title}");
+                System.Console.WriteLine($"\nBook id:{book.Id} Book title: {book.Title}");
                 foreach (var author in book.BookAuthors)
                 {
-                    System.Console.WriteLine($"Author: {author.Author.FirstName} {author.Author.LastName}");
+                    System.Console.WriteLine($"Author ID: {author.Author.Id} Author: {author.Author.FirstName} {author.Author.LastName}");
                     System.Console.WriteLine($"Bio: {author.Author.Biography}\n");
                 }
             }

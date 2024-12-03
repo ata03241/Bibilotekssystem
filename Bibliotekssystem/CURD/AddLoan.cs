@@ -18,7 +18,9 @@ public class Addloans
 
             if (!books.Any())
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("No books available right now.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
@@ -36,27 +38,35 @@ public class Addloans
 
             if (loancount >= LoanLimt)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Borrower '{borrower}' has reached the loan limit of {LoanLimt} active loans.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
             Console.Write("Enter Book ID: ");
             if (!int.TryParse(Console.ReadLine(), out var bookId))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid Book ID.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
             var book = context.Books.Find(bookId);
             if (book == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Book not found.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
             if (!book.IsAvailable)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("The book is currently unavialble");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
             var loan = new Loan
@@ -69,8 +79,10 @@ public class Addloans
 
             context.Loans.Add(loan);
             context.SaveChanges();
-
+            
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Loan added for Book {bookId}, borrowed by {borrower}.");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

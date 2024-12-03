@@ -9,14 +9,16 @@ public class AddAuthorr
         {
             System.Console.Write("Write Author First Name: ");
             var authorName = Console.ReadLine();
-            System.Console.WriteLine("Write Author Last Name: ");
+            System.Console.Write("Write Author Last Name: ");
             var authorLast = Console.ReadLine();
             Console.Write("Author's Date of Birth (yyyy-MM-dd): ");
             var birthDateInput = Console.ReadLine();
 
             if (!DateTime.TryParse(birthDateInput, out DateTime birthDate))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid date format. Please use yyyy-MM-dd.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
@@ -34,7 +36,9 @@ public class AddAuthorr
 
             context.Authors.Add(author);
             context.SaveChanges();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Author {authorName} {authorLast} added successfully!");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

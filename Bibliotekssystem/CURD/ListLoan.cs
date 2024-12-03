@@ -16,7 +16,9 @@ public class ListLoan
             
             if(!loans.Any()) //om de finns ingen 
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("There are no loan books");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {

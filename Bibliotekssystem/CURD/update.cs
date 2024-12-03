@@ -25,7 +25,9 @@ public class Update
                 updateloan();
                 break;
             default:
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid choice. Exiting update process.");
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
         }
     }
@@ -37,7 +39,9 @@ public class Update
             var loans = context.Loans.ToList();
             if(!loans.Any())
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("No loan found");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
@@ -51,7 +55,9 @@ public class Update
             System.Console.WriteLine("Enter Loan ID to update: ");
             if (!int.TryParse(Console.ReadLine(), out var loanId))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Invalid Loan ID.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
             
@@ -59,7 +65,9 @@ public class Update
             var loan = context.Loans.Include(L => L.Book).FirstOrDefault(l => l.Id == loanId);
             if(loan == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Not found");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
@@ -77,7 +85,9 @@ public class Update
             if (returned == "yes") loan.IsReturned = true;
 
             context.SaveChanges();
-            System.Console.WriteLine("Updated successfully.");          
+            Console.ForegroundColor = ConsoleColor.Green;
+            System.Console.WriteLine("Updated successfully.");   
+            Console.ForegroundColor = ConsoleColor.White;       
         }
     }
 
@@ -89,7 +99,9 @@ public class Update
             var books = context.Books.ToList();
             if(!books.Any())
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("No book found");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
@@ -101,14 +113,18 @@ public class Update
             System.Console.Write("Enter Book ID to update: ");
             if (!int.TryParse(Console.ReadLine(), out var bookId))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Invalid Book ID.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
             var book = context.Books.Find(bookId);
             if (book == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Book not found.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
@@ -140,7 +156,9 @@ public class Update
                 book.IsAvailable = false;
             }
             context.SaveChanges();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Book updated successfully.");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
@@ -152,7 +170,9 @@ public class Update
 
             if(!authors.Any())
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("No authors found");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
@@ -165,14 +185,18 @@ public class Update
             System.Console.WriteLine("Enter Author Id: ");
             if(!int.TryParse(Console.ReadLine(), out var authorId))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Invalid Author Id: ");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
             var author = context.Authors.Find(authorId); //vi hittar author med id
             if(author == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Author not found");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
 
@@ -202,7 +226,9 @@ public class Update
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     System.Console.WriteLine("Invalid date format");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }            
 
@@ -215,7 +241,9 @@ public class Update
             }
 
             context.SaveChanges();
+            Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine("athor updated successfully");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
