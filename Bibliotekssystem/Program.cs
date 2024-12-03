@@ -60,6 +60,9 @@ class Program
             case 11:
                 bookwauthor.Run();
                 break;
+            case 12: 
+                loanhistory.Run();
+                break;
 
         }
     }

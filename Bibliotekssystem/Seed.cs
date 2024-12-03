@@ -61,7 +61,7 @@ public class Seed
                 Console.WriteLine("Books have been added successfully.");
             }
 
-              if (!context.BookAuthors.Any())
+            if (!context.BookAuthors.Any())
             {
                 var book1 = context.Books.First(b => b.Title == "The mountain");
                 var author1 = context.Authors.First(a => a.FirstName == "NIKO" && a.LastName == "BOY");
