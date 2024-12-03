@@ -10,13 +10,13 @@ class Program
     {
         Seed.Run();
         System.Console.WriteLine("\n Welcome to library");
-        int menuSel = 10;
+        int menuSel = 13;
         do
         {
             menuSel = MenuSelection();
             MenuExecution(menuSel);
 
-        } while (menuSel != 10);
+        } while (menuSel != 13);
         Console.ForegroundColor = ConsoleColor.DarkYellow;
         System.Console.WriteLine("\nThank you for your time");
         Console.ForegroundColor = ConsoleColor.White;
@@ -54,13 +54,16 @@ class Program
             case 9:
                 Update.Run();
                 break;
+            case 10:
+                authorwbook.Run();
+                break;
 
         }
     }
 
     private static int MenuSelection()
     {
-        int menuSel = 10;
+        int menuSel = 13;
         while (true)
         {
             try
@@ -77,9 +80,12 @@ class Program
                     System.Console.WriteLine("7. List Books With Authors ");
                     System.Console.WriteLine("8. List all loan book");
                     System.Console.WriteLine("9. Update author, book and relationship");
-                    System.Console.WriteLine("10. Quit");
+                    System.Console.WriteLine("10. List all books by a specific author");
+                    System.Console.WriteLine("11. List all authors of a specific book");
+                    System.Console.WriteLine("12. Show loan history");
+                    System.Console.WriteLine("13. Quit");
                      menuSel = int.Parse(Console.ReadLine());
-                    if (menuSel >= 1 && menuSel <= 10)
+                    if (menuSel >= 1 && menuSel <= 13)
                     {
                         break;
                     }

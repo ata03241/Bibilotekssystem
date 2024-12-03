@@ -25,7 +25,7 @@ public class ListLoan
                 foreach (var loan in loans)
                 {
                     System.Console.WriteLine($"\nBook: {loan.Book.Title}");
-                    System.Console.WriteLine($"borrower: {loan.BorrowerName}\n");
+                    System.Console.WriteLine($"borrower: {loan.BorrowerName}");
                     System.Console.WriteLine($"Is returned: {loan.IsReturned}");
                 }
 
